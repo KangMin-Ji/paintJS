@@ -16,6 +16,7 @@ ctx.lineWidth = 2.5;
 
 let painting = false;
 let filling  = false;
+let colour_opacity = false;
 
 function stopPainting() {
   painting = false;
@@ -42,6 +43,13 @@ function onMouseMove(event) {
 
 function handleColourClick(event) {
   const colour = event.target.style.backgroundColor;
+  const colourOpacity = event.target;
+ 
+  if(colour_opacity === false) {
+    colourOpacity.classList.add("colour_opacity");
+    colour_opacity = true;
+  }
+  
   ctx.strokeStyle = colour;
   ctx.fillStyle = colour;
 }
@@ -76,7 +84,7 @@ if (canvas) {
 }
 
 Array.from(colours).forEach(potato => potato.addEventListener("click", handleColourClick));
-//** potato: represents each of the items inside of the array const colours
+//** potato: represents each of the items inside of the array 'const colours'
 
 if(range) {
   range.addEventListener("input", handleRangeChange);

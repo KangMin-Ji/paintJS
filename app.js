@@ -41,17 +41,22 @@ function onMouseMove(event) {
 
 }
 
-function handleColourClick(event) {
-  const colour = event.target.style.backgroundColor;
+function opacityChange(event) {
   const colourOpacity = event.target;
- 
   if(colour_opacity === false) {
     colourOpacity.classList.add("colour_opacity");
     colour_opacity = true;
+  } else {
+    colourOpacity.classList.remove("colour_opacity");
+    colour_opacity = false;
   }
-  
+}
+
+function handleColourClick(event) {
+  const colour = event.target.style.backgroundColor;
   ctx.strokeStyle = colour;
   ctx.fillStyle = colour;
+  opacityChange(event);
 }
 
 function handleRangeChange(event) {
